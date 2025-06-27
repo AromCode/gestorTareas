@@ -17,7 +17,15 @@ button:hover{background:#a71d2a}</style>
   <button onclick="addTask()">Agregar</button>
   <ul id="task-list"></ul>
 
-<script>window.addEventListener("load",()=>{const t=JSON.parse(localStorage.getItem("tasks"))||[];t.forEach(e=>renderTask(e))});function addTask(){const t=document.getElementById("task-input"),e=t.value.trim();""!==e&&(renderTask(e),saveTask(e),t.value="")}function renderTask(t){const e=document.getElementById("task-list"),n=document.createElement("li");n.innerHTML=`<span>${t}</span><button onclick="removeTask(this, '${t}')">Eliminar</button>`,e.appendChild(n)}function saveTask(t){const e=JSON.parse(localStorage.getItem("tasks"))||[];e.push(t),localStorage.setItem("tasks",JSON.stringify(e))}function removeTask(t,e){t.parentElement.remove();let n=JSON.parse(localStorage.getItem("tasks"))||[];n=n.filter(t=>t!==e),localStorage.setItem("tasks",JSON.stringify(n))}</script>
+<script>
+  window.addEventListener("load",()=>{const t=JSON.parse(localStorage.getItem("tasks"))||[];t.forEach(e=>renderTask(e))});function
+addTask(){const t=document.getElementById("task-input"),e=t.value.trim();""!==e&&(renderTask(e),saveTask(e),t.value="")}function
+renderTask(t){const e=document.getElementById("task-list"),n=document.createElement("li");n.innerHTML=`<span>${t}</span><button
+onclick="removeTask(this, '${t}')">Eliminar</button>`,e.appendChild(n)}function saveTask(t){const
+e=JSON.parse(localStorage.getItem("tasks"))||[];e.push(t),localStorage.setItem("tasks",JSON.stringify(e))}function
+removeTask(t,e){t.parentElement.remove();let
+n=JSON.parse(localStorage.getItem("tasks"))||[];n=n.filter(t=>t!==e),localStorage.setItem("tasks",JSON.stringify(n))}
+</script>
 
 </body>
 </html>
