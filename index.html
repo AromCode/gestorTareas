@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TALLER GESTION DE VERSIONES</title>
+<style>body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;margin:40px;color:#333}#task-input{padding:10px;width:300px;border:1px solid #ccc;border-radius:6px;margin-right:10px;box-shadow:1px 1px 3px rgba(0,0,0,.1)}button{padding:10px 18px;background:#007BFF;color:#fff;border:none;border-radius:6px;cursor:pointer;box-shadow:1px 1px 4px rgba(0,0,0,.1)}button:hover{background:#0056b3}ul{list-style:none;padding:0;margin-top:20px;max-width:400px}li{padding:12px;margin:8px 0;background:#fff;border-radius:6px;display:flex;justify-content:space-between;box-shadow:1px 1px 5px rgba(0,0,0,.05)}li button{background:#dc3545;padding:6px 10px;font-size:14px;border-radius:4px}li button:hover{background:#a71d2a}</style>
+
+</head>
+<body>
+  <h1>TALLER GESTION DE VERSIONES</h1>
+  <input type="text" id="task-input" placeholder="Nueva tarea...">
+  <button onclick="addTask()">Agregar</button>
+  <ul id="task-list"></ul>
+
+<script>window.addEventListener("load",()=>{const t=JSON.parse(localStorage.getItem("tasks"))||[];t.forEach(e=>renderTask(e))});function addTask(){const t=document.getElementById("task-input"),e=t.value.trim();""!==e&&(renderTask(e),saveTask(e),t.value="")}function renderTask(t){const e=document.getElementById("task-list"),n=document.createElement("li");n.innerHTML=`<span>${t}</span><button onclick="removeTask(this, '${t}')">Eliminar</button>`,e.appendChild(n)}function saveTask(t){const e=JSON.parse(localStorage.getItem("tasks"))||[];e.push(t),localStorage.setItem("tasks",JSON.stringify(e))}function removeTask(t,e){t.parentElement.remove();let n=JSON.parse(localStorage.getItem("tasks"))||[];n=n.filter(t=>t!==e),localStorage.setItem("tasks",JSON.stringify(n))}</script>
+
+</body>
+</html>
